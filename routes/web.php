@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\RentCarController;
 use App\Http\Controllers\VehicleController;
@@ -16,6 +17,20 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/admin/dashboard', function () {
+        return 'Admin Dashboard';
+    })->name('admin.dashboard')->middleware('admin');
+
+    Route::get('/customer/dashboard', function () {
+        return 'Customer Dashboard';
+    })->name('customer.dashboard')->middleware('customer');
+});
 
 Route::get('/', function() {
     return view('landing_page.index');
