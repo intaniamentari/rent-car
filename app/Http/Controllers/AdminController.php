@@ -144,6 +144,6 @@ class AdminController extends Controller
 
         // Berikan respons bahwa data telah dihapus
         // return redirect()->route('vehicles.index')->with('success', 'Vehicle berhasil dihapus.');
-        return response()->json(['message' => 'Vehicle deleted successfully']);
+        return response()->json(['message' => 'Admin deleted successfully']);
     }
 }

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\RentCarController;
 use App\Http\Controllers\VehicleController;
 use Illuminate\Support\Facades\Route;
 
@@ -50,3 +52,5 @@ Route::get('/dashboard', function() {
 })->name('dashboard');
 Route::resource('/vehicles', VehicleController::class);
 Route::resource('/admins', AdminController::class);
+Route::resource('/customers', CustomerController::class);
+Route::resource('/rentcar', RentCarController::class);

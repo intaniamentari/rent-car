@@ -19,4 +19,9 @@ class Vehicle extends Model
         'charge',
         'available'
     ];
+
+    public function rentCars()
+    {
+        return $this->hasMany(RentCar::class);
+    }
 }

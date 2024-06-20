@@ -85,7 +85,7 @@ class VehicleController extends Controller
         $vehicle = Vehicle::findOrFail($id);
         $vehicle->update($request->all());
 
-        return redirect()->route('vehicles.index')->with('success', 'Vehicle berhasil ditambahkan.');
+        return redirect()->route('vehicles.index')->with('success', 'Vehicle berhasil diubah.');
     }
 
     /**

@@ -23,6 +23,9 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call(VehicleSeeder::class);
+        $this->call(UserSeeder::class);
+        $this->call(AdminSeeder::class);
+        $this->call(CustomerSeeder::class);
 
     }
 }

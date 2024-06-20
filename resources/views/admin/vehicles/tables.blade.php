@@ -305,29 +305,29 @@
     <link rel="stylesheet" href="{{ asset('datatable/css/dataTables.bootstrap5.css') }}" />
     <style>
         .dataTables_wrapper {
-    margin: 20px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
 
-.dataTables_length {
-    margin-bottom: 10px;
-}
+        .dataTables_length {
+            margin-bottom: 10px;
+        }
 
-.dataTables_filter input {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 5px;
-}
+        .dataTables_filter input {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 5px;
+        }
 
-.dataTables_info {
-    margin-top: 10px;
-}
+        .dataTables_info {
+            margin-top: 10px;
+        }
 
-.dataTables_paginate {
-    margin-top: 10px;
-}
+        .dataTables_paginate {
+            margin-top: 10px;
+        }
 
     </style>
 @endpush

@@ -208,7 +208,7 @@
                                                 <label class="form-label col-12 text-start" for="edit-password">Password</label>
                                                 <input type="password" name="password" class="form-control" id="edit-password" />
                                                 <small id="passwordHelpBlock" class="form-text text-muted">
-                                                    Kosongkan jika tidak ingin mengubah password.
+                                                    Leave blank if you don't want to change the password.
                                                 </small>
                                             </div>
                                             <div class="modal-footer">

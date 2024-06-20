@@ -75,11 +75,35 @@
         </a>
       </li>
 
+      <!-- Rent Car -->
+      <li class="menu-item {{ request()->routeIs('rentcar.index') ? 'active' : '' }}">
+        <a href="{{ route('rentcar.index') }}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-home-circle"></i>
+          <div data-i18n="Analytics">Rent Car</div>
+        </a>
+      </li>
+
       <!-- Veicle -->
       <li class="menu-item {{ request()->routeIs('vehicles.index') ? 'active' : '' }}">
         <a href="{{ route('vehicles.index') }}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-home-circle"></i>
           <div data-i18n="Analytics">Vehicle</div>
+        </a>
+      </li>
+
+      <!-- Admin -->
+      <li class="menu-item {{ request()->routeIs('admins.index') ? 'active' : '' }}">
+        <a href="{{ route('admins.index') }}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-home-circle"></i>
+          <div data-i18n="Analytics">Admin</div>
+        </a>
+      </li>
+
+      <!-- Customer -->
+      <li class="menu-item {{ request()->routeIs('customers.index') ? 'active' : '' }}">
+        <a href="{{ route('customers.index') }}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-home-circle"></i>
+          <div data-i18n="Analytics">Customer</div>
         </a>
       </li>
 
