@@ -199,6 +199,25 @@
                                                 <label class="form-label col-12 text-start" for="edit-charge">Charge</label>
                                                 <input type="number" name="charge" class="form-control" id="edit-charge" required />
                                             </div>
+                                            <div class="mb-3">
+                                                <label class="form-label col-12 text-start" for="edit-charge">Available</label>
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-6 text-start">
+                                                            <input class="form-check-input" type="radio" name="available" id="edit-available-free" value="1">
+                                                            <label class="form-check-label" for="edit-available-free">
+                                                                free
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-6 text-start">
+                                                            <input class="form-check-input" type="radio" name="available" id="edit-available-used" value="0">
+                                                            <label class="form-check-label" for="edit-available-used">
+                                                                used
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
                                                 <button type="submit" class="btn btn-success">Update</button>
@@ -330,7 +349,7 @@
                         name: 'available',
                         render: function(data, type, row) {
                             // Menampilkan label "Free" jika available == 1, "Use" jika available == 0
-                            return data == 1 ? '<span class="badge rounded-pill bg-label-success">Free</span>' : '<span class="badge rounded-pill bg-label-danger">Use</span>';
+                            return data == 1 ? '<span class="badge rounded-pill bg-label-success">Free</span>' : '<span class="badge rounded-pill bg-label-danger">Used</span>';
                         }
                     },
                     {
@@ -364,6 +383,13 @@
             $('#edit-model').val(rowData.model);
             $('#edit-vehicle_number').val(rowData.vehicle_number);
             $('#edit-charge').val(rowData.charge);
+
+            // Atur status radio button sesuai dengan nilai available
+            if (rowData.available == 1) {
+                $('#edit-available-free').prop('checked', true);
+            } else {
+                $('#edit-available-used').prop('checked', true);
+            }
 
             // Atur action URL dari form edit
             $('#editVehicleForm').attr('action', '/vehicles/' + id);
