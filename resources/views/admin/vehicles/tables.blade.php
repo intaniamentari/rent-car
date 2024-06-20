@@ -155,6 +155,26 @@
                                           <input type="text" name="vehicle_number" class="form-control" id="basic-default-fullname" required />
                                         </div>
                                         <div class="mb-3">
+                                          <label class="form-label col-12 text-start" for="basic-default-fullname">Mileage</label>
+                                          <input type="number" name="mileage" class="form-control" id="basic-default-fullname" required />
+                                        </div>
+                                        <div class="mb-3">
+                                          <label class="form-label col-12 text-start" for="basic-default-fullname">Transmission</label>
+                                          <input type="text" name="transmission" class="form-control" id="basic-default-fullname" required />
+                                        </div>
+                                        <div class="mb-3">
+                                          <label class="form-label col-12 text-start" for="basic-default-fullname">Seats</label>
+                                          <input type="number" name="seats" class="form-control" id="basic-default-fullname" required />
+                                        </div>
+                                        <div class="mb-3">
+                                          <label class="form-label col-12 text-start" for="basic-default-fullname">Luggage</label>
+                                          <input type="number" name="luggage" class="form-control" id="basic-default-fullname" required />
+                                        </div>
+                                        <div class="mb-3">
+                                          <label class="form-label col-12 text-start" for="basic-default-fullname">Fuel</label>
+                                          <input type="text" name="fuel" class="form-control" id="basic-default-fullname" required />
+                                        </div>
+                                        <div class="mb-3">
                                           <label class="form-label col-12 text-start" for="basic-default-fullname">Charge</label>
                                           <input type="number" name="charge" class="form-control" id="basic-default-fullname" required />
                                         </div>
@@ -194,6 +214,26 @@
                                             <div class="mb-3">
                                                 <label class="form-label col-12 text-start" for="edit-vehicle_number">Vehicle Number</label>
                                                 <input type="text" name="vehicle_number" class="form-control" id="edit-vehicle_number" required />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label col-12 text-start" for="edit-mileage">Mileage</label>
+                                                <input type="text" name="mileage" class="form-control" id="edit-mileage" required />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label col-12 text-start" for="edit-transmission">Transmission</label>
+                                                <input type="text" name="transmission" class="form-control" id="edit-transmission" required />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label col-12 text-start" for="edit-seats">Seats</label>
+                                                <input type="text" name="seats" class="form-control" id="edit-seats" required />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label col-12 text-start" for="edit-lunggage">Lunggage</label>
+                                                <input type="text" name="lunggage" class="form-control" id="edit-lunggage" required />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label col-12 text-start" for="edit-fuel">Fuel</label>
+                                                <input type="text" name="fuel" class="form-control" id="edit-fuel" required />
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label col-12 text-start" for="edit-charge">Charge</label>
@@ -383,6 +423,11 @@
             $('#edit-model').val(rowData.model);
             $('#edit-vehicle_number').val(rowData.vehicle_number);
             $('#edit-charge').val(rowData.charge);
+            $('#edit-mileage').val(rowData.mileage);
+            $('#edit-transmission').val(rowData.transmission);
+            $('#edit-seats').val(rowData.seats);
+            $('#edit-lunggage').val(rowData.lunggage);
+            $('#edit-fuel').val(rowData.fuel);
 
             // Atur status radio button sesuai dengan nilai available
             if (rowData.available == 1) {

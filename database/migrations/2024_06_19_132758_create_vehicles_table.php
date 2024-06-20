@@ -18,6 +18,11 @@ return new class extends Migration
             $table->string('brand');
             $table->string('model');
             $table->string('vehicle_number');
+            $table->integer('mileage');
+            $table->string('transmission');
+            $table->integer('seats');
+            $table->integer('lunggage');
+            $table->string('fuel');
             $table->decimal('charge', 8, 2);
             $table->boolean('available')->default(true);
             $table->timestamps();
