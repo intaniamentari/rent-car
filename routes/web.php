@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\RentCarController;
 use App\Http\Controllers\VehicleController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,15 +19,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/sign-up', [AuthController::class, 'signup'])->name('sign-up');
+Route::post('/sign-up', [AuthController::class, 'createAccount'])->name('sign-up');
 
 Route::middleware('auth')->group(function () {
     Route::get('/admin/dashboard', function () {
         return 'Admin Dashboard';
     })->name('admin.dashboard')->middleware('admin');
-
+    Route::get('/dashboard', function() {
+        return view('admin.index');
+    })->name('dashboard')->middleware('admin');
+    Route::resource('/vehicles', VehicleController::class)->middleware('admin');
+    Route::resource('/admins', AdminController::class)->middleware('admin');
+    Route::resource('/customers', CustomerController::class)->middleware('admin');
+    Route::resource('/rentcar', RentCarController::class)->middleware('admin');
     Route::get('/customer/dashboard', function () {
         return 'Customer Dashboard';
     })->name('customer.dashboard')->middleware('customer');
@@ -47,25 +56,14 @@ Route::get('/pricing', function() {
 Route::get('/cars', function() {
     return view('landing_page.car');
 })->name('cars');
+Route::get('/cars-detail', function() {
+    return view('landing_page.car-single');
+})->name('cars-detail');
+Route::resource('/carbook', RentCarController::class);
+Route::post('/carbook-check', [RentCarController::class, 'checkAvailableVehicle'])->name('checkVehicle');
 Route::get('/blog', function() {
     return view('landing_page.blog');
 })->name('blog');
 Route::get('/contact', function() {
     return view('landing_page.contact');
 })->name('contact');
-Route::get('/sign-in', function() {
-    return view('landing_page.signin');
-})->name('sign-in');
-Route::get('/sign-up', function() {
-    return view('landing_page.signup');
-})->name('sign-up');
-
-
-// admin
-Route::get('/dashboard', function() {
-    return view('admin.index');
-})->name('dashboard');
-Route::resource('/vehicles', VehicleController::class);
-Route::resource('/admins', AdminController::class);
-Route::resource('/customers', CustomerController::class);
-Route::resource('/rentcar', RentCarController::class);

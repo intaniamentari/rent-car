@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('landing_page/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
@@ -20,7 +20,7 @@
       	<div class="row justify-content-center">
       		<div class="col-md-12">
       			<div class="car-details">
-      				<div class="img rounded" style="background-image: url(images/bg_1.jpg);"></div>
+      				<div class="img rounded" style="background-image: url(landing_page/images/bg_1.jpg);"></div>
       				<div class="text text-center">
       					<span class="subheading">Cheverolet</span>
       					<h2>Mercedes Grand Sedan</h2>
@@ -166,7 +166,7 @@
 							   		<div class="col-md-7">
 							   			<h3 class="head">23 Reviews</h3>
 							   			<div class="review d-flex">
-									   		<div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
+									   		<div class="user-img" style="background-image: url(landing_page/images/person_1.jpg)"></div>
 									   		<div class="desc">
 									   			<h4>
 									   				<span class="text-left">Jacob Webb</span>
@@ -186,7 +186,7 @@
 									   		</div>
 									   	</div>
 									   	<div class="review d-flex">
-									   		<div class="user-img" style="background-image: url(images/person_2.jpg)"></div>
+									   		<div class="user-img" style="background-image: url(landing_page/images/person_2.jpg)"></div>
 									   		<div class="desc">
 									   			<h4>
 									   				<span class="text-left">Jacob Webb</span>
@@ -206,7 +206,7 @@
 									   		</div>
 									   	</div>
 									   	<div class="review d-flex">
-									   		<div class="user-img" style="background-image: url(images/person_3.jpg)"></div>
+									   		<div class="user-img" style="background-image: url(landing_page/images/person_3.jpg)"></div>
 									   		<div class="desc">
 									   			<h4>
 									   				<span class="text-left">Jacob Webb</span>
@@ -308,7 +308,7 @@
         <div class="row">
         	<div class="col-md-4">
     				<div class="car-wrap rounded ftco-animate">
-    					<div class="img rounded d-flex align-items-end" style="background-image: url(images/car-1.jpg);">
+    					<div class="img rounded d-flex align-items-end" style="background-image: url(landing_page/images/car-1.jpg);">
     					</div>
     					<div class="text">
     						<h2 class="mb-0"><a href="car-single.html">Mercedes Grand Sedan</a></h2>
@@ -322,7 +322,7 @@
     			</div>
     			<div class="col-md-4">
     				<div class="car-wrap rounded ftco-animate">
-    					<div class="img rounded d-flex align-items-end" style="background-image: url(images/car-2.jpg);">
+    					<div class="img rounded d-flex align-items-end" style="background-image: url(landing_page/images/car-2.jpg);">
     					</div>
     					<div class="text">
     						<h2 class="mb-0"><a href="car-single.html">Range Rover</a></h2>
@@ -336,7 +336,7 @@
     			</div>
     			<div class="col-md-4">
     				<div class="car-wrap rounded ftco-animate">
-    					<div class="img rounded d-flex align-items-end" style="background-image: url(images/car-3.jpg);">
+    					<div class="img rounded d-flex align-items-end" style="background-image: url(landing_page/images/car-3.jpg);">
     					</div>
     					<div class="text">
     						<h2 class="mb-0"><a href="car-single.html">Mercedes Grand Sedan</a></h2>

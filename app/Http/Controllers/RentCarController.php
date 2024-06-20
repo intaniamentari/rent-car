@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RentCar;
+use App\Models\Vehicle;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class RentCarController extends Controller
@@ -13,7 +16,43 @@ class RentCarController extends Controller
      */
     public function index()
     {
-        //
+        $vehicles = Vehicle::all();
+        return view('landing_page.car-book')->with('vehicles', $vehicles);
+    }
+
+    public function checkAvailableVehicle(Request $request)
+    {
+        $startRent = $request->input('start_rent');
+        $finishRent = $request->input('finish_rent');
+        $vehicle = Vehicle::find($request->input('vehicle'));
+
+
+        // Mengonversi string tanggal menjadi objek Carbon
+        $startDate = Carbon::parse($startRent);
+        $endDate = Carbon::parse($finishRent);
+
+        // Menghitung jumlah hari antara dua tanggal
+        $days = $startDate->diffInDays($endDate);
+
+        $price = $vehicle->charge * $days;
+
+        info([
+            'days' => $days,
+            'start_date' => $startDate->toDateString(),
+            'end_date' => $endDate->toDateString(),
+            'unit_price' => $vehicle->charge,
+            'total' => $price
+        ]);
+
+        return response()->json([
+            'status' => 'success',
+            'vehicle' => $vehicle->id,
+            'days' => $days,
+            'start_date' => $startDate->toDateString(),
+            'end_date' => $endDate->toDateString(),
+            'unit_price' => $vehicle->charge,
+            'total' => $price
+        ]);
     }
 
     /**
@@ -34,7 +73,18 @@ class RentCarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        RentCar::create([
+            'customer_id' => auth()->user()->id,
+            'vehicle_id' => $request->vehicle_id,
+            'start_rent' => $request->start_rent,
+            'end_rent' => $request->end_rent,
+            'unit_price' => $request->unit_price,
+            'total_price' => $request->total_price,
+        ]);
+
+        return response()->json([
+            'status' => 'success'
+        ]);
     }
 
     /**

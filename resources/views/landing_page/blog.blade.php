@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('landing_page/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
@@ -19,7 +19,7 @@
         <div class="row d-flex justify-content-center">
           <div class="col-md-12 text-center d-flex ftco-animate">
           	<div class="blog-entry justify-content-end mb-md-5">
-              <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_1.jpg');">
+              <a href="blog-single.html" class="block-20 img" style="background-image: url('landing_page/images/image_1.jpg');">
               </a>
               <div class="text px-md-5 pt-4">
               	<div class="meta mb-3">
@@ -35,7 +35,7 @@
           </div>
           <div class="col-md-12 text-center d-flex ftco-animate">
           	<div class="blog-entry justify-content-end mb-md-5">
-              <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_2.jpg');">
+              <a href="blog-single.html" class="block-20 img" style="background-image: url('landing_page/images/image_2.jpg');">
               </a>
               <div class="text px-md-5 pt-4">
               	<div class="meta mb-3">
@@ -51,7 +51,7 @@
           </div>
           <div class="col-md-12 text-center d-flex ftco-animate">
           	<div class="blog-entry">
-              <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_3.jpg');">
+              <a href="blog-single.html" class="block-20 img" style="background-image: url('landing_page/images/image_3.jpg');">
               </a>
               <div class="text px-md-5 pt-4">
               	<div class="meta mb-3">
@@ -67,7 +67,7 @@
           </div>
           <div class="col-md-12 text-center d-flex ftco-animate">
           	<div class="blog-entry justify-content-end mb-md-5">
-              <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_4.jpg');">
+              <a href="blog-single.html" class="block-20 img" style="background-image: url('landing_page/images/image_4.jpg');">
               </a>
               <div class="text px-md-5 pt-4">
               	<div class="meta mb-3">
@@ -83,7 +83,7 @@
           </div>
           <div class="col-md-12 text-center d-flex ftco-animate">
           	<div class="blog-entry justify-content-end mb-md-5">
-              <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_5.jpg');">
+              <a href="blog-single.html" class="block-20 img" style="background-image: url('landing_page/images/image_5.jpg');">
               </a>
               <div class="text px-md-5 pt-4">
               	<div class="meta mb-3">
@@ -99,7 +99,7 @@
           </div>
           <div class="col-md-12 text-center d-flex ftco-animate">
           	<div class="blog-entry">
-              <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_6.jpg');">
+              <a href="blog-single.html" class="block-20 img" style="background-image: url('landing_page/images/image_6.jpg');">
               </a>
               <div class="text px-md-5 pt-4">
               	<div class="meta mb-3">

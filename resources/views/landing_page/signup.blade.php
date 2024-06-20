@@ -7,7 +7,8 @@
         <!-- Register Card -->
         <div class="card">
           <div class="card-body">
-            <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+            <form id="formAuthentication" class="mb-3" action="{{ route('sign-up') }}" method="POST">
+                @csrf
                 <div class="container">
                     <div class="row">
                         <div class="col-6">
@@ -136,11 +137,11 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <button class="btn btn-primary d-grid w-100 mt-4 mb-3">Sign up</button>
+                            <button class="btn btn-primary d-grid w-100 mt-4 mb-3" type="submit">Sign up</button>
 
                             <p class="text-center">
                                 <span>Already have an account?</span>
-                                <a href="{{ route('sign-in') }}">
+                                <a href="{{ route('login') }}">
                                 <span>Sign in instead</span>
                                 </a>
                             </p>

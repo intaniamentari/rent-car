@@ -19,9 +19,9 @@ return new class extends Migration
             $table->bigInteger('vehicle_id')->unsigned();
             $table->date('start_rent');
             $table->date('end_rent');
-            $table->decimal('unit_price', 8, 2);
-            $table->decimal('total_price', 8, 2);
-            $table->string('status'); //finis //used //booking
+            $table->integer('unit_price');
+            $table->integer('total_price');
+            $table->string('status')->default('used'); //finis //used //booking
             $table->timestamps();
             $table->softDeletes();
 

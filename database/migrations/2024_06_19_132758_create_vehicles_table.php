@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('seats');
             $table->integer('lunggage');
             $table->string('fuel');
-            $table->decimal('charge', 8, 2);
+            $table->integer('charge');
             $table->boolean('available')->default(true);
             $table->timestamps();
             $table->softDeletes();

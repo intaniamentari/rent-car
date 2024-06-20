@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CustomerRequest;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -28,7 +30,7 @@ class AuthController extends Controller
             if ($user->role == 'admin') {
                 return redirect()->route('dashboard');
             } elseif ($user->role == 'customer') {
-                return redirect()->route('vehicles.index');
+                return redirect()->route('carbook');
             }
         } else {
             return back()->withErrors(['email' => 'Invalid credentials.']);
@@ -39,5 +41,36 @@ class AuthController extends Controller
     {
         Auth::logout();
         return redirect()->route('login');
+    }
+
+    public function signup()
+    {
+        return view('landing_page.signup');
+    }
+
+    public function createAccount(CustomerRequest $request)
+    {
+        $data = $request->all();
+
+        $data = $request->validated(); // Mengambil data validasi
+
+        // Buat user baru
+        $user = User::create([
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'role' => 'customer'
+        ]);
+
+        // Buat admin baru dan kaitkan dengan user yang baru dibuat
+        Customer::create([
+            'user_id' => $user->id,
+            'phone' => $data['phone'],
+            'name' => $data['name'],
+            'address' => $data['address'],
+            'sim_card' => $data['sim_card']
+        ]);
+
+        return redirect()->route('login')->with('success', 'Customer berhasil ditambahkan.');
+
     }
 }
