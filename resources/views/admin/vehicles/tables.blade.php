@@ -167,8 +167,8 @@
                                           <input type="number" name="seats" class="form-control" id="basic-default-fullname" required />
                                         </div>
                                         <div class="mb-3">
-                                          <label class="form-label col-12 text-start" for="basic-default-fullname">Luggage</label>
-                                          <input type="number" name="luggage" class="form-control" id="basic-default-fullname" required />
+                                          <label class="form-label col-12 text-start" for="basic-default-fullname">Lunggage</label>
+                                          <input type="number" name="lunggage" class="form-control" id="basic-default-fullname" required />
                                         </div>
                                         <div class="mb-3">
                                           <label class="form-label col-12 text-start" for="basic-default-fullname">Fuel</label>

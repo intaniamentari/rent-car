@@ -17,7 +17,12 @@ class Vehicle extends Model
         'model',
         'vehicle_number',
         'charge',
-        'available'
+        'available',
+        'mileage',
+        'transmission',
+        'seats',
+        'lunggage',
+        'fuel'
     ];
 
     public function rentCars()

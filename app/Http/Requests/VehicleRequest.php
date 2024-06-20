@@ -29,6 +29,11 @@ class VehicleRequest extends FormRequest
             'model' => 'required',
             'vehicle_number' => 'required',
             'charge' => 'required',
+            'mileage' => 'required',
+            'transmission' => 'required',
+            'seats' => 'required',
+            'lunggage' => 'required',
+            'fuel' => 'required',
         ];
     }
 }
