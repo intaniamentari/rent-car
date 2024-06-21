@@ -30,7 +30,7 @@ class AuthController extends Controller
             if ($user->role == 'admin') {
                 return redirect()->route('dashboard');
             } elseif ($user->role == 'customer') {
-                return redirect()->route('carbook');
+                return redirect()->route('carbook.index');
             }
         } else {
             return back()->withErrors(['email' => 'Invalid credentials.']);
@@ -40,7 +40,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('login');
+        return redirect('/');
     }
 
     public function signup()

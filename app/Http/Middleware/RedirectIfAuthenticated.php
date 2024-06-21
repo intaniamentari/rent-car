@@ -24,7 +24,7 @@ class RedirectIfAuthenticated
             if ($user->role == 'admin') {
                 return redirect()->route('dashboard');
             } elseif ($user->role == 'customer') {
-                return redirect()->route('carbook');
+                return redirect()->route('carbook.index');
             }
         }
 

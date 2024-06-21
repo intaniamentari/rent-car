@@ -16,9 +16,6 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        // $vehicles = Vehicle::all();
-
-        // return view('admin.vehicles.tables')->with('vehicles', $vehicles);
         if (request()->ajax()) {
             $users = Vehicle::query();
             return DataTables::of($users)
