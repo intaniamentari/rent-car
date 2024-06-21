@@ -68,12 +68,12 @@
 
     <ul class="menu-inner py-1">
       <!-- Dashboard -->
-      <li class="menu-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+      {{-- <li class="menu-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
         <a href="{{ route('dashboard') }}" style="text-decoration: none;" class="menu-link">
           <i class="menu-icon tf-icons bx bx-home-circle"></i>
           <div data-i18n="Analytics">Dashboard</div>
         </a>
-      </li>
+      </li> --}}
 
       <!-- Rent Car -->
       <li class="menu-item {{ request()->routeIs('rentcar-info.index') ? 'active' : '' }}">
@@ -104,6 +104,17 @@
         <a href="{{ route('customers.index') }}" style="text-decoration: none;" class="menu-link">
           <i class="menu-icon tf-icons bx bx-user"></i>
           <div data-i18n="Analytics">Customer</div>
+        </a>
+      </li>
+
+      <!-- Logout -->
+      <li class="menu-item">
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
+        <a href="#" style="text-decoration: none;" class="menu-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+          <i class="menu-icon tf-icons bx bx-power-off"></i>
+          <div data-i18n="Analytics">Logout</div>
         </a>
       </li>
     </ul>

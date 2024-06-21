@@ -100,7 +100,6 @@ class VehicleController extends Controller
         $vehicle->delete();
 
         // Berikan respons bahwa data telah dihapus
-        // return redirect()->route('vehicles.index')->with('success', 'Vehicle berhasil dihapus.');
         return response()->json(['message' => 'Vehicle deleted successfully']);
     }
 }

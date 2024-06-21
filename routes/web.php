@@ -30,9 +30,9 @@ Route::middleware('auth')->group(function () {
     // Route::get('/admin/dashboard', function () {
     //     return 'Admin Dashboard';
     // })->name('admin.dashboard')->middleware('admin');
-    Route::get('/dashboard', function() {
-        return view('admin.index');
-    })->name('dashboard')->middleware('admin');
+    // Route::get('/dashboard', function() {
+    //     return view('admin.index');
+    // })->name('dashboard')->middleware('admin');
     Route::resource('/vehicles', VehicleController::class)->middleware('admin');
     Route::resource('/admins', AdminController::class)->middleware('admin');
     Route::resource('/customers', CustomerController::class)->middleware('admin');

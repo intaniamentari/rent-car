@@ -22,7 +22,7 @@ class RedirectIfAuthenticated
         if (Auth::check()) {
             $user = Auth::user();
             if ($user->role == 'admin') {
-                return redirect()->route('dashboard');
+                return redirect()->route('rentcar-info.index');
             } elseif ($user->role == 'customer') {
                 return redirect()->route('carbook.index');
             }

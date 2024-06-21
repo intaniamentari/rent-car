@@ -70,7 +70,9 @@
 
   <body>
     <!-- Layout wrapper -->
-    <div class="layout-wrapper layout-content-navbar">
+    <div class="layout-wrapper layout-content-navbar" style="display: grid;
+    grid-template-rows: 1fr auto;
+    min-height: 100vh;">
       <div class="layout-container">
         <!-- Menu -->
 
@@ -78,7 +80,8 @@
         <!-- / Menu -->
 
         @yield('content')
-
+      </div>
+    </div>
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <script src="{{ asset('admin/assets/vendor/libs/jquery/jquery.js') }}"></script>
