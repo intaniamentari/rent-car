@@ -47,9 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/carbook-check', [RentCarController::class, 'checkAvailableVehicle'])->name('checkVehicle')->middleware('customer');
 });
 
-Route::get('/', function() {
-    return view('landing_page.index');
-})->name('home');
+Route::get('/', [RentCarController::class, 'landingPage'])->name('home');
 
 Route::get('/about', function() {
     return view('landing_page.about');

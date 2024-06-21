@@ -20,6 +20,12 @@ class RentCarController extends Controller
         return view('landing_page.car-book')->with('vehicles', $vehicles);
     }
 
+    public function landingPage()
+    {
+        $vehicles = Vehicle::all();
+        return view('landing_page.index', compact('vehicles'));
+    }
+
     public function checkAvailableVehicle(Request $request)
     {
         $startRent = $request->input('start_rent');

@@ -23,7 +23,7 @@
 	  					<div class="col-md-12 align-items-center">
 	  						<form id="carbook-form" action="{{ route('checkVehicle') }}" method="post" class="request-form ftco-animate bg-primary">
                                 @csrf
-                                <h2>Make your trip</h2>
+                                <h2>Rent your car</h2>
 			    				<div class="form-group">
 			    					<label for="" class="label">Choose Car</label>
 			    					{{-- <input type="text" class="form-control" placeholder="City, Airport, Station, etc"> --}}
