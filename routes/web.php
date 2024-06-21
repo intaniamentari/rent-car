@@ -61,13 +61,9 @@ Route::get('/pricing', function() {
     return view('landing_page.pricing');
 })->name('pricing');
 
-Route::get('/cars', function() {
-    return view('landing_page.car');
-})->name('cars');
+Route::get('/cars', [VehicleController::class, 'showAllVehicle'])->name('cars');
 
-Route::get('/cars-detail', function() {
-    return view('landing_page.car-single');
-})->name('cars-detail');
+Route::get('/cars/{id}', [VehicleController::class, 'show'])->name('cars-detail');
 
 
 Route::get('/blog', function() {

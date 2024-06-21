@@ -34,6 +34,7 @@ class VehicleRequest extends FormRequest
             'seats' => 'required',
             'lunggage' => 'required',
             'fuel' => 'required',
+            'image' => 'required',
         ];
     }
 }

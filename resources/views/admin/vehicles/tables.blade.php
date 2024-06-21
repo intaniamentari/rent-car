@@ -34,9 +34,14 @@
                                   ></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="{{ route('vehicles.store') }}" method="POST">
+                                    <form id="my-form" action="{{ route('vehicles.store') }}" method="POST">
                                         @csrf
                                         @method('post')
+                                        <div class="mb-3">
+                                            <label class="form-label col-12 text-start" for="basic-default-fullname">Image</label>
+                                            <input class="form-control" type="file" id="image" name="image" accept="image/*">
+                                        </div>
+                                        <div id="preview" style="width: 200px;"></div>
                                         <div class="mb-3">
                                           <label class="form-label col-12 text-start" for="basic-default-fullname">Brand</label>
                                           <input type="text" name="brand" class="form-control" id="basic-default-fullname" required />
@@ -98,6 +103,13 @@
                                         <form id="editVehicleForm" method="POST">
                                             @csrf
                                             @method('PUT')
+                                            <div class="mb-3">
+                                                <label class="form-label col-12 text-start" for="basic-default-fullname">Image</label>
+                                                <input class="form-control" type="file" id="edit-image" name="image" accept="image/*">
+                                            </div>
+                                            <div id="edit-preview" style="width: 200px;">
+                                                <img src="" alt="Current Image" id="edit-image-preview" style="max-width: 100%; height: auto;">
+                                            </div>
                                             <div class="mb-3">
                                                 <label class="form-label col-12 text-start" for="edit-brand">Brand</label>
                                                 <input type="text" name="brand" class="form-control" id="edit-brand" required />
@@ -290,6 +302,7 @@
             $('#edit-seats').val(rowData.seats);
             $('#edit-lunggage').val(rowData.lunggage);
             $('#edit-fuel').val(rowData.fuel);
+            $('#edit-image-preview').attr('src', rowData.image);
 
             // Atur status radio button sesuai dengan nilai available
             if (rowData.available == 1) {
@@ -340,10 +353,192 @@
 
 
     </script>
+    <script>
+        // Function to handle image preview
+        function previewImages() {
+            var preview = document.getElementById('preview');
+            preview.innerHTML = '';
+            var files = document.getElementById('image').files;
+
+            function readAndPreview(file) {
+                if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
+                    var reader = new FileReader();
+
+                    reader.addEventListener("load", function() {
+                        var image = new Image();
+                        image.src = reader.result;
+                        preview.appendChild(image);
+                    }, false);
+
+                    reader.readAsDataURL(file);
+                }
+            }
+
+            if (files) {
+                [].forEach.call(files, readAndPreview);
+            }
+        }
+
+        document.getElementById('image').addEventListener('change', previewImages, false);
+
+        // Handle form submit with Dropzone integration
+        document.getElementById("my-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            var formData = new FormData(this);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/vehicles", true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    alert("Form submitted successfully!");
+                    location.reload();
+                } else {
+                    alert("Error submitting the form");
+                }
+            };
+
+            var files = document.getElementById('image').files;
+            for (var i = 0; i < files.length; i++) {
+                formData.append('file[]', files[i]);
+            }
+
+            xhr.send(formData);
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#table_vehicles').on('click', '.btn-edit', function() {
+                var id = $(this).data('id');
+                console.log("Edit button clicked with id:", id);
+
+                // Function to handle image preview edit
+                function previewImagesEdit() {
+                    $('#edit-image-preview').remove();
+                    var preview = document.getElementById('edit-preview');
+                    preview.innerHTML = '';
+                    var files = document.getElementById('edit-image').files;
+
+                    function readAndPreview(file) {
+                        if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
+                            var reader = new FileReader();
+
+                            reader.addEventListener("load", function() {
+                                var image = new Image();
+                                image.src = reader.result;
+                                image.style.width = '200px';
+                                preview.appendChild(image);
+                            }, false);
+
+                            reader.readAsDataURL(file);
+                        }
+                    }
+
+                    if (files) {
+                        [].forEach.call(files, readAndPreview);
+                    }
+                }
+
+                document.getElementById('edit-image').addEventListener('change', previewImagesEdit, false);
+            });
+
+            $('#editVehicleForm').on('submit', function(event) {
+                event.preventDefault();
+
+                var formData = new FormData(this);
+                var id = $('#table_vehicles').data('id');
+
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "/vehicles/" + id, true);
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        alert("Form submitted successfully!");
+                        location.reload(); // Reload halaman setelah berhasil
+                    } else {
+                        alert("Error submitting the form");
+                    }
+                };
+
+                var files = document.getElementById('edit-image').files;
+                for (var i = 0; i < files.length; i++) {
+                    formData.append('file[]', files[i]);
+                }
+
+                xhr.send(formData);
+            });
+        });
+    </script>
+    {{-- <script>
+        // Function to handle image preview edit
+        function previewImagesEdit() {
+            $('#edit-image-preview').remove();
+            var preview = document.getElementById('edit-preview');
+            preview.innerHTML = '';
+            var files = document.getElementById('edit-image').files;
+
+            function readAndPreview(file) {
+                if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
+                    var reader = new FileReader();
+
+                    reader.addEventListener("load", function() {
+                        var image = new Image();
+                        image.src = reader.result;
+                        image.style.width = '200px';
+                        preview.appendChild(image);
+                    }, false);
+
+                    reader.readAsDataURL(file);
+                }
+            }
+
+            if (files) {
+                [].forEach.call(files, readAndPreview);
+            }
+        }
+
+        document.getElementById('edit-image').addEventListener('change', previewImagesEdit, false);
+
+        // Handle form submit with Dropzone integration
+        document.getElementById("editVehicleForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            var formData = new FormData(this);
+
+            var xhr = new XMLHttpRequest();
+            var id = $('#table_vehicles').data('id');
+
+            xhr.open("POST", "/vehicles", true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    alert("Form submitted successfully!");
+                    location.reload();
+                } else {
+                    alert("Error submitting the form");
+                }
+            };
+
+            var files = document.getElementById('edit-image').files;
+            for (var i = 0; i < files.length; i++) {
+                formData.append('file[]', files[i]);
+            }
+
+            xhr.send(formData);
+        });
+    </script> --}}
     <script src="{{ asset('datatable/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('datatable/js/dataTables.bootstrap5.js') }}"></script>
     <script src="{{ asset('datatable/js/dataTables.js') }}"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <link  href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+@endpush
+
+@push('css')
+<style>
+    #preview img {
+        max-width: 100px;  /* Mengatur lebar maksimum */
+        max-height: 100px; /* Mengatur tinggi maksimum */
+        margin: 10px;
+    }
+</style>
 @endpush

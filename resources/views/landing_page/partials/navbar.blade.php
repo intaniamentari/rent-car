@@ -14,7 +14,7 @@
             {{-- <li class="nav-item {{ request()->is('pricing') ? 'active' : '' }}"><a href="{{ route('pricing') }}" class="nav-link">Pricing</a></li> --}}
             <li class="nav-item {{ request()->is('cars') ? 'active' : '' }}"><a href="{{ route('cars') }}" class="nav-link">Cars</a></li>
             {{-- <li class="nav-item {{ request()->is('blog') ? 'active' : '' }}"><a href="{{ route('blog') }}" class="nav-link">Blog</a></li> --}}
-            <li class="nav-item {{ request()->is('contact') ? 'active' : '' }}"><a href="{{ route('contact') }}" class="nav-link">Contact</a></li>
+            {{-- <li class="nav-item {{ request()->is('contact') ? 'active' : '' }}"><a href="{{ route('contact') }}" class="nav-link">Contact</a></li> --}}
             <li class="nav-item {{ request()->is('login') ? 'active' : '' }}"><a href="{{ route('login') }}" class="nav-link">Login</a></li>
           @else
             <li class="nav-item {{ request()->is('carbook.index') ? 'active' : '' }}"><a href="{{ route('carbook.index') }}" class="nav-link">CarBook</a></li>

@@ -6,6 +6,7 @@ use App\Http\Requests\VehicleRequest;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Str;
 
 class VehicleController extends Controller
 {
@@ -43,9 +44,38 @@ class VehicleController extends Controller
      */
     public function store(VehicleRequest $request)
     {
-        Vehicle::create($request->all());
+        if ($request->file('image')) {
+            // Buat nama file baru dengan UUID dan ekstensi asli
+            $image = $request->file('image');
+            $imageName = Str::uuid() . '.' . $image->getClientOriginalExtension();
+
+            // Simpan file dengan nama baru di direktori 'public/uploads'
+            $path = 'storage/' . $image->storeAs('uploads', $imageName, 'public');
+        } else {
+            $path = 'takde';
+        }
+
+        Vehicle::create([
+            'brand' => $request->brand,
+            'model' => $request->model,
+            'vehicle_number' => $request->vehicle_number,
+            'charge' => $request->charge,
+            'mileage' => $request->mileage,
+            'transmission' => $request->transmission,
+            'seats' => $request->seats,
+            'lunggage' => $request->lunggage,
+            'fuel' => $request->fuel,
+            'image' => $path,
+        ]);
 
         return redirect()->route('vehicles.index')->with('success', 'Vehicle berhasil ditambahkan.');
+    }
+
+    public function showAllVehicle()
+    {
+        $vehicles = Vehicle::all();
+
+        return view('landing_page.car', compact('vehicles'));
     }
 
     /**
@@ -54,9 +84,10 @@ class VehicleController extends Controller
      * @param  \App\Models\vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function show(vehicle $vehicle)
+    public function show($id)
     {
-        //
+        $vehicle = Vehicle::find($id);
+        return view('landing_page.car-single', compact('vehicle'));
     }
 
     /**
@@ -80,7 +111,30 @@ class VehicleController extends Controller
     public function update(VehicleRequest $request, $id)
     {
         $vehicle = Vehicle::findOrFail($id);
-        $vehicle->update($request->all());
+
+        if ($request->file('image')) {
+            // Buat nama file baru dengan UUID dan ekstensi asli
+            $image = $request->file('image');
+            $imageName = Str::uuid() . '.' . $image->getClientOriginalExtension();
+
+            // Simpan file dengan nama baru di direktori 'public/uploads'
+            $path = 'storage/' . $image->storeAs('uploads', $imageName, 'public');
+        } else {
+            $path = 'takde';
+        }
+
+        $vehicle->update([
+            'brand' => $request->brand,
+            'model' => $request->model,
+            'vehicle_number' => $request->vehicle_number,
+            'charge' => $request->charge,
+            'mileage' => $request->mileage,
+            'transmission' => $request->transmission,
+            'seats' => $request->seats,
+            'lunggage' => $request->lunggage,
+            'fuel' => $request->fuel,
+            'image' => $path,
+        ]);
 
         return redirect()->route('vehicles.index')->with('success', 'Vehicle berhasil diubah.');
     }

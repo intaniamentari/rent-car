@@ -24,6 +24,7 @@ return new class extends Migration
             $table->integer('lunggage');
             $table->string('fuel');
             $table->integer('charge');
+            $table->string('image')->nullable();
             $table->boolean('available')->default(true);
             $table->timestamps();
             $table->softDeletes();

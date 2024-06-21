@@ -22,7 +22,8 @@ class Vehicle extends Model
         'transmission',
         'seats',
         'lunggage',
-        'fuel'
+        'fuel',
+        'image'
     ];
 
     public function rentCars()
